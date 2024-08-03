@@ -1,0 +1,8 @@
+<h1>Pages</h1>
+
+<% @pages.each do |page| %>
+  <%= render page %>
+  <p><%= link_to "Show this page", page, class: "btn btn-sm btn-white" %> </p>
+<% end %>
+
+<%= link_to "New page", new_page_path, class: "btn btn-sm btn-white" %>
