@@ -36,7 +36,8 @@ class PagesController < ApplicationController
     params.require(:page).permit(
       :name,
       :content,
-      :ancestry
+      :ancestry,
+      :parent_id
     )
   end
 end

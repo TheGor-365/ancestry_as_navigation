@@ -1,8 +1,25 @@
 <h1>Pages</h1>
 
-<% @pages.each do |page| %>
-  <%= render page %>
-  <p><%= link_to "Show this page", page, class: "btn btn-sm btn-white" %> </p>
-<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Parent Id</th>
+      <th scope="col">Children Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr>
+        <td><%= link_to_unless_current page.id, page %></td>
+        <td><%= link_to_unless_current page.name, page %></td>
+        <td><%= link_to_unless_current page.parent_id, page %></td>
+        <td><%= link_to_unless_current page.root.name, page %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<%= link_to "New page", new_page_path, class: "btn btn-sm btn-white" %>
+<hr class="my-5">
+<%= link_to "New page", new_page_path, class: "btn btn-sm btn-primary" %>
