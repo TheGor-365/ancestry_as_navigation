@@ -1,11 +1,13 @@
-<h1>Pages</h1>
+<h1 class="mb-5">
+  Pages
+</h1>
 
-<table class="table">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Name</th>
-      <th scope="col">Parent Id</th>
+      <th scope="col">Ancestry</th>
       <th scope="col">Children Name</th>
     </tr>
   </thead>
@@ -14,12 +16,11 @@
       <tr>
         <td><%= link_to_unless_current page.id, page %></td>
         <td><%= link_to_unless_current page.name, page %></td>
-        <td><%= link_to_unless_current page.parent_id, page %></td>
+        <td><%= link_to_unless_current page.ancestry, page %></td>
         <td><%= link_to_unless_current page.root.name, page %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<hr class="my-5">
-<%= link_to "New page", new_page_path, class: "btn btn-sm btn-primary" %>
+<%= link_to "New page", new_page_path, class: "btn btn-sm btn-primary my-3" %>

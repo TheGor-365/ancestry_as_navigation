@@ -2,17 +2,26 @@
   <ul id="submenu">
     <% Page.roots.each do |page| %>
     <li>
-      <%= link_to page.name, page %>
+      <h6><%= link_to page.name, page %></h6>
     </li>
       <% page.children.each do |name| %>
-        <small>
+        <li>
           <%= link_to_unless_current name.name, name, class: 'text-success' %>
-        </small><br>
+        </li>
+        <% name.children.each do |third| %>
+          <small>
+            <%= link_to_unless_current third.name, third, class: 'text-primary' %>
+          </small><br>
+        <% end %>
       <% end %>
     <% end %>
   </ul>
 
-  <div class="row">
+  <% page.ancestors.each do |ancestor| %>
+    <%= link_to ancestor.name, ancestor %>  &gt;
+  <% end %>
+
+  <div class="row mt-3">
     <div class="col-1">
       <strong>Name:</strong>
     </div>
