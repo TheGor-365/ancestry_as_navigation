@@ -1,16 +1,16 @@
 <div id="<%= dom_id page %>">
   <ul id="submenu">
-    <% Page.roots.each do |page| %>
+    <% Page.roots.each do |page_root| %>
     <li>
-      <h6><%= link_to page.name, page %></h6>
+      <h6><%= link_to page_root.name, page_root %></h6>
     </li>
-      <% page.children.each do |name| %>
+      <% page_root.children.each do |child| %>
         <li>
-          <%= link_to_unless_current name.name, name, class: 'text-success' %>
+          <%= link_to_unless_current child.name, child, class: 'text-success' %>
         </li>
-        <% name.children.each do |third| %>
+        <% child.children.each do |grand_child| %>
           <small>
-            <%= link_to_unless_current third.name, third, class: 'text-primary' %>
+            <%= link_to_unless_current grand_child.name, grand_child, class: 'text-primary' %>
           </small><br>
         <% end %>
       <% end %>
